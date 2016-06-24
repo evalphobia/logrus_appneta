@@ -7,6 +7,7 @@ import (
 )
 
 const defaultErrorClass = "error"
+const defaultLayerName = "logrus_appneta"
 
 var defaultLevels = []logrus.Level{
 	logrus.PanicLevel,
@@ -18,6 +19,7 @@ var defaultLevels = []logrus.Level{
 type AppnetaHook struct {
 	FieldPrefix string
 	ErrorClass  string
+	LayerName   string
 
 	levels []logrus.Level
 }
@@ -26,6 +28,7 @@ type AppnetaHook struct {
 func NewHook() *AppnetaHook {
 	return &AppnetaHook{
 		ErrorClass: defaultErrorClass,
+		LayerName:  defaultLayerName,
 		levels:     defaultLevels,
 	}
 }
@@ -42,7 +45,8 @@ func (hook *AppnetaHook) Fire(entry *logrus.Entry) error {
 	}
 
 	if ctx, ok := hook.getContext(d); ok {
-		tv.Error(ctx, ec, msg)
+		l, _ := tv.BeginLayer(ctx, hook.getLayerName(d))
+		l.Error(ec, msg)
 		return nil
 	}
 
@@ -74,6 +78,15 @@ func (hook *AppnetaHook) getLayer(d logrus.Fields) (tv.Layer, bool) {
 		return value, true
 	}
 	return nil, false
+}
+
+func (hook *AppnetaHook) getLayerName(d logrus.Fields) string {
+	const key = "layer_name"
+
+	if value, ok := d[hook.FieldPrefix+key].(string); ok {
+		return value
+	}
+	return hook.LayerName
 }
 
 func (hook *AppnetaHook) getContext(d logrus.Fields) (context.Context, bool) {

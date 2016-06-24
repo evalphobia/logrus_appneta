@@ -37,6 +37,7 @@ Some logrus fields have a special meaning in this hook.
 |`context`|`context` is `context.Context` type and used to send error. `layer` or `context` is required to send error.|
 |`error`|`error` is `error` type and used for error message |
 |`error_class`|`error_class` is `string` type and used for error class name|
+|`layer_name`|`layer_name` is `string` type and used as a layer name. If this field is empty, `AppnetaHook.LayerName` is used as a layer name.|
 
 These field can have original prefix.
 
