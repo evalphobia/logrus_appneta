@@ -8,8 +8,8 @@ matrix:
   allow_failures:
     - go: tip
 before_install:
-  - go get github.com/axw/gocov/gocov
   - go get golang.org/x/tools/cmd/cover
+  - go get github.com/modocache/gover
 before_script:
   - go vet ./...
   - gofmt -s -l .
