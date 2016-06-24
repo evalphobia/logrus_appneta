@@ -1,7 +1,8 @@
 logrus_appneta
 ====
 
-[![Build Status](https://travis-ci.org/evalphobia/logrus_appneta.svg?branch=master)](https://travis-ci.org/evalphobia/logrus_appneta)
+[![Build Status](https://travis-ci.org/evalphobia/logrus_appneta.svg?branch=master)](https://travis-ci.org/evalphobia/logrus_appneta) [![codecov](https://codecov.io/gh/evalphobia/logrus_appneta/branch/master/graph/badge.svg)](https://codecov.io/gh/evalphobia/logrus_appneta)
+ [![GoDoc](https://godoc.org/github.com/evalphobia/logrus_appneta?status.svg)](https://godoc.org/github.com/evalphobia/logrus_appneta)
 
 
 # AppNeta TraceView Hook for Logrus <img src="http://i.imgur.com/hTeVwmJ.png" width="40" height="40" alt=":walrus:" class="emoji" title=":walrus:"/>
