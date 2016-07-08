@@ -46,6 +46,7 @@ func (hook *AppnetaHook) Fire(entry *logrus.Entry) error {
 
 	if ctx, ok := hook.getContext(d); ok {
 		l, _ := tv.BeginLayer(ctx, hook.getLayerName(d))
+		defer l.End()
 		l.Error(ec, msg)
 		return nil
 	}
