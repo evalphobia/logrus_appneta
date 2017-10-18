@@ -1,7 +1,7 @@
 package logrus_appneta
 
 import (
-	"github.com/Sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 	"github.com/tracelytics/go-traceview/v1/tv"
 	"golang.org/x/net/context"
 )
